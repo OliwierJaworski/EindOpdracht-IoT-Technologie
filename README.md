@@ -12,4 +12,4 @@ The project also includes displaying data in a dashboard and setting up a secure
 
 ## Teamwork
 
-These goals are indicators of the student body's ability to handle hardware and software technologies and how effectively the team works..
+These goals are indicators of the student body's ability to handle hardware and software technologies and how effectively the team works.
