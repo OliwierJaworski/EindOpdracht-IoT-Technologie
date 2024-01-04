@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from datetime import datetime
 import requests
 
@@ -12,10 +13,28 @@ now = datetime.now()
 timestamp = datetime.timestamp(now)
 
 #Headers
+=======
+# The CRUD-endpoint URL
+crud_endpoint_url = "iot.pxl.bjth.xyz/api/v1/temperature"
+
+# ??
+payload = {
+
+ "id": <UNIX TIME>,
+
+ "value": <FLOAT>,
+
+ "scale": "<STRING>"
+
+}
+
+# Headers
+>>>>>>> 6c4f728 (crud endpoint python)
 headers = {
     "Content-Type": "application/json",
 }
 
+<<<<<<< HEAD
 # Read data from files
 with open('/sys/bus/iio/devices/iio:device0/in_temp0_raw', 'r') as f:
     TEMP_RAW = int(f.read())
@@ -43,6 +62,10 @@ payload = {
 #Debugging code
 try:
     #Send POST request
+=======
+try:
+    # Stuur een POST-verzoek naar het CRUD-eindpunt
+>>>>>>> 6c4f728 (crud endpoint python)
     response = requests.post(crud_endpoint_url, json=payload, headers=headers)
 
     # Controleer of het verzoek succesvol was (status code 2xx)
