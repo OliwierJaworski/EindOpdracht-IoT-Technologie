@@ -1,5 +1,5 @@
 import time
 
 while True:
-    print("container si not wor")
+    print("container updated after startup")
     time.sleep(10)  
