@@ -46,7 +46,7 @@ jobs:
 
           for issue_number in $(gh issue list --json "number" -L 100 --repo ${{ github.repository }} | jq -r '.[].number'); do
             if [ -z "$(gh issue view $issue_number --json "assignee.login" -q '.assignee.login')" ]; then
-              gh issue edit $issue_number --add-label "to do"
+              gh issue edit $issue_number --add-label "in progress"
               gh issue edit $issue_number --remove-label "in progress"
             else
               gh issue edit $issue_number --remove-label "to do"
