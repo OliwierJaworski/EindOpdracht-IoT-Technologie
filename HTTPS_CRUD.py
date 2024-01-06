@@ -1,6 +1,6 @@
 #The CRUD-endpoint URL
 #crud_endpoint_url = "iot.pxl.bjth.xyz/api/v1/temperature"
-#crud_endpoint_url = "https://crudcrud.com/api/9a217728b59047d4bad1e8a87494eb36"
+crud_endpoint_url = "https://crudcrud.com/api/9a217728b59047d4bad1e8a87494eb36"
 
 #Current time and date
 now = datetime.now()
@@ -36,13 +36,9 @@ with open('in_temp0_offset', 'r') as f:
 #Calculate temperature
 TEMP = ((TEMP_RAW - TEMP_OFSET) / TEMP_SCALE)
 
-#Send POST request
-requests.post(crud_endpoint_url, json=payload, headers=headers)
-
-'''
 #Debugging code
 try:
-    # Stuur een POST-verzoek naar het CRUD-eindpunt
+    #Send POST request
     response = requests.post(crud_endpoint_url, json=payload, headers=headers)
 
     # Controleer of het verzoek succesvol was (status code 2xx)
@@ -53,4 +49,3 @@ try:
 
 except Exception as e:
     print(f"Fout bij het uitvoeren van het verzoek: {str(e)}")
-'''
