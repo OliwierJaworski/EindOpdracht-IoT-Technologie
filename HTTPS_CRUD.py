@@ -1,10 +1,17 @@
 #The CRUD-endpoint URL
-crud_endpoint_url = "iot.pxl.bjth.xyz/api/v1/temperature"
+#crud_endpoint_url = "iot.pxl.bjth.xyz/api/v1/temperature"
+#crud_endpoint_url = "https://crudcrud.com/api/9a217728b59047d4bad1e8a87494eb36"
+
+#Current time and date
+now = datetime.now()
+
+# Unix-tijd conversion
+timestamp = datetime.timestamp(now)
 
 #Format to send
 payload = {
 
- "id": <UNIX TIME>,
+ "id": timestamp,
 
  "value": TEMP,
 
@@ -17,7 +24,7 @@ headers = {
 }
 
 # Read data from files
-with open('in_temp0_raw', 'r') as f:
+with open('/sys/bus/iio/devices/iio:device0/in_temp0_raw', 'r') as f:
     TEMP_RAW = int(f.read())
 
 with open('in_temp0_scale', 'r') as f:
