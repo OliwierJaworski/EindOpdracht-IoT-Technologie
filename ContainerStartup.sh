@@ -10,19 +10,44 @@ docker pull "$DOCKERREPO:$DOCKERTAG"
 #latest image is saved here
 LATEST_IMAGE_ID=$(docker inspect --format '{{.Id}}' "$DOCKERREPO:$DOCKERTAG")
 
-#remove old image with xargs which holds the image id $1=name, $2 = tag, $3=id
-IMAGEID=$(docker image ls | grep "<none>" | awk '{print $3}')
+#find the container to restart 
+IMAGEIDREBOOT=$(docker image ls | grep "$DOCKERTAG" | awk '{print $3}')
+#find the container to update and remove old image with xargs which holds the image id $1=name, $2 = tag, $3=id
+IMAGEIDUPDATE=$(docker image ls | grep "<none>" | awk '{print $3}')
 
-# Find containers using the image to be removed
-CONTAINERS_TO_REMOVE=$(docker ps -q --filter ancestor="$IMAGEID")
+echo -e "found the following image: "$IMAGEIDREBOOT"."
 
-# Check if there are any containers to remove
-if [ -n "$CONTAINERS_TO_REMOVE" ]; then
-    echo "Containers using image $IMAGEID found. Forcefully removing them."
-    docker rm -f $CONTAINERS_TO_REMOVE
+if [ -z "$IMAGEIDREBOOT" ]; then
+        echo -e "No file with $DOCKERTAG was found."
+
+elif [ -n "$IMAGEIDREBOOT" ]; then
+        echo -e "Found the image:$DOCKERTAG"
+
+        #restart container if it exited
+        CONTAINERS_TO_RESTART=$(docker ps -a -q -f status=exited --filter ancestor="$IMAGEIDREBOOT")
+
+        if [ -n "$CONTAINERS_TO_RESTART" ]; then
+                echo -e "the following container will be restarted : $CONTAINERS_TO_RESTART"
+                sudo docker restart $CONTAINERS_TO_RESTART
+        else
+                echo -e "no container to be restarted was found"
+        fi
 fi
+if [ -n "$IMAGEIDUPDATE" ]; then
 
-docker rmi $IMAGEID
+        # Find containers using the image to be removed
+        CONTAINERS_TO_REMOVE=$(docker ps -a -q --filter ancestor="$IMAGEIDUPDATE")
 
-#starts a container using the newest image in detached mode by the name of --name
-docker run --name pythonapplication -d $LATEST_IMAGE_ID
+        # Check if there are any containers to remove
+        if [ -n "$CONTAINERS_TO_REMOVE" ]; then
+            echo -e "Containers using image $IMAGEID found. Forcefully removing them."
+            docker rm -f $CONTAINERS_TO_REMOVE
+        else
+             echo -e "No container was found to remove"
+        fi
+
+        docker rmi $IMAGEID
+
+        #starts a container using the newest image in detached mode by the name of --name
+        docker run --name pythonapplication -d $LATEST_IMAGE_ID
+fi
