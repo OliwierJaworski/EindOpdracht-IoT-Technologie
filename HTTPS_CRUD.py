@@ -1,22 +1,15 @@
+from datetime import datetime
+import requests
+
 #The CRUD-endpoint URL
-#crud_endpoint_url = "iot.pxl.bjth.xyz/api/v1/temperature"
-crud_endpoint_url = "https://crudcrud.com/api/9a217728b59047d4bad1e8a87494eb36"
+crud_endpoint_url = "iot.pxl.bjth.xyz/api/v1/temperature"
+
 
 #Current time and date
 now = datetime.now()
 
 # Unix-tijd conversion
 timestamp = datetime.timestamp(now)
-
-#Format to send
-payload = {
-
- "id": timestamp,
-
- "value": TEMP,
-
- "scale": "Celsius"
-}
 
 #Headers
 headers = {
@@ -34,7 +27,18 @@ with open('in_temp0_offset', 'r') as f:
     TEMP_OFFSET = float(f.read())
 
 #Calculate temperature
-TEMP = ((TEMP_RAW - TEMP_OFSET) / TEMP_SCALE)
+TEMP = ((TEMP_RAW - TEMP_OFFSET) / TEMP_SCALE)
+
+#Format to send
+payload = {
+
+ "id": timestamp,
+
+ "value": TEMP,
+
+ "scale": "Celsius"
+}
+
 
 #Debugging code
 try:
