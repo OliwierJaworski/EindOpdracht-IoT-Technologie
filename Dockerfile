@@ -1,11 +1,4 @@
-FROM ubuntu
-RUN apt-get update && apt-get install -y build-essential
-RUN apt-get install -y python3 python3-pip
-RUN pip3 install poetry
+FROM arm32v7/python:3.7-slim-buster
+COPY HTTPS_CRUD.py /app/
 WORKDIR /app
-COPY main.c /app/
-ADD ./main.c .(/usr/bin)
-RUN gcc -o main.exe main.c
-COPY py_app/ .
-RUN poetry install
-CMD ["./main.exe", "python3", "app.py"]
+CMD ["python3", "HTTPS_CRUD.py"]
