@@ -35,34 +35,27 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPO: ${{ github.repository }}
           NUMBER: ${{ github.event.issue.number }}
-          LABELS: to do, in progress, help wanted
-
+          LABELS: To do, in progress, help wanted
+          
   label_existing_issues:
-    runs-on: ubuntu-latest
-    permissions:
-      issues: write
-    steps:
-      - name: Label existing issues
-        run: |
-          # Iterate through all existing issues
-          for issue_number in $(gh issue list --json "number" -L 100 --repo ${{ github.repository }} | jq -r '.[].number'); do
-            # Apply your labeling logic here for existing issues
-            # Check if the issue is not assigned
-          if [ -z "$(gh issue view $issue_number --json "assignee.login" -q '.assignee.login')" ]; then
+   runs-on: ubuntu-latest
+   permissions:
+    issues: write
+   steps:
+    - name: Label existing issues
+      run: |
+        # Iterate through all existing issues
+        for issue_number in $(gh issue list --json "number" -L 100 --repo ${{ github.repository }} | jq -r '.[].number'); do
+          if [ -z "$(gh issue view $issue_number --json "assignee.login" -q '.assignee.login' 2>/dev/null)" ]; then
             gh issue edit $issue_number --add-label "To do"
             gh issue edit $issue_number --remove-label "in progress"
           else
-            assignee_login=$(gh issue view $issue_number --json "assignee.login" -q '.assignee.login')
-            if [ ! -z "$assignee_login" ] && [[ "$assignee_login" =~ "some-pattern" ]]; then
-              gh issue edit $issue_number --remove-label "To do"
-              gh issue edit $issue_number --add-label "in progress"
-            fi
+            gh issue edit $issue_number --remove-label "To do"
+            gh issue edit $issue_number --add-label "in progress"
           fi
-
-
-          done
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_REPO: ${{ github.repository }}
-          NUMBER: ${{ github.event.issue.number }}
-          LABELS: to do, in progress, help wanted
+        done
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GH_REPO: ${{ github.repository }}
+        NUMBER: ${{ github.event.issue.number }}
+        LABELS: To do, in progress, help wanted
