@@ -40,14 +40,15 @@ if [ -n "$IMAGEIDUPDATE" ]; then
 
         # Check if there are any containers to remove
         if [ -n "$CONTAINERS_TO_REMOVE" ]; then
-            echo -e "Containers using image $IMAGEID found. Forcefully removing them."
-            docker rm -f $CONTAINERS_TO_REMOVE
+            echo -e "Containers using image $IMAGEIDUPDATE found. Forcefully removing them."
+            sudo docker rm -f $CONTAINERS_TO_REMOVE
+            sudo docker rmi $IMAGEIDUPDATE
+
+            #starts a container using the newest image in detached mode by the name of --name
+            sudo docker run --name pythonapplication -d $LATEST_IMAGE_ID
+
         else
              echo -e "No container was found to remove"
         fi
-
-        docker rmi $IMAGEID
-
-        #starts a container using the newest image in detached mode by the name of --name
-        docker run --name pythonapplication -d $LATEST_IMAGE_ID
 fi
+
