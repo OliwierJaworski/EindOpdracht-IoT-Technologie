@@ -1,4 +1,4 @@
 FROM arm32v7/python:3.7-slim-buster
-COPY helloworld.py /app/
+COPY HTTPS_CRUD.py /app/
 WORKDIR /app
-CMD ["python3", "helloworld.py"]
+CMD ["python3", "HTTPS_CRUD.py"]
