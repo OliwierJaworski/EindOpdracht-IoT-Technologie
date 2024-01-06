@@ -1,0 +1,31 @@
+name: Close Issue on Pull Request Merge
+
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  closeIssue:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Close Issue
+      uses: actions/github-script@v3
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          const issueNumberRegex = /closes #(\d+)/i;
+          const match = context.payload.pull_request.body.match(issueNumberRegex);
+
+          if (match) {
+            const issueNumber = parseInt(match[1], 10);
+            const octokit = github.getOctokit('${{ secrets.GITHUB_TOKEN }}');
+            
+            await octokit.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber,
+              state: 'closed'
+            });
+          }
