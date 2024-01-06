@@ -1,7 +1,4 @@
-FROM ubuntu
-RUN apt-get update && apt-get install -y build-essential
-COPY main.c /app/
+FROM arm32v7/python:3.7-slim-buster
+COPY HTTPS_CRUD.py /app/
 WORKDIR /app
-ADD ./main.c .(/usr/bin)
-RUN gcc -o main.exe main.c
-CMD ["C:\Users\Gebruiker\Documents\TWEEDE_JAAR\OIT\Nieuwepoging/hello.exe"]
+CMD ["python3", "HTTPS_CRUD.py"]
