@@ -1,5 +1,6 @@
 [Unit]
 Description=starts the containers up and updates them on startup
+<<<<<<< HEAD
 
 [Service]
 ExecStart=/home/xilinx/StartupScript/ContainerScript.sh
@@ -7,4 +8,11 @@ ExecStart=/home/xilinx/StartupScript/ContainerScript.sh
 [Install]
 WantedBy=multi-user.target
 
+=======
+>>>>>>> 7faa424428c7b5ea7e1022f895f10449f2d7252c
 
+[Service]
+ExecStart=/home/xilinx/StartupScript/ContainerScript.sh
+
+[Install]
+WantedBy=multi-user.target
