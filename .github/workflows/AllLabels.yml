@@ -12,29 +12,6 @@ on:
       - created
 
 jobs:
-  label_issues:
-    runs-on: ubuntu-latest
-    permissions:
-      issues: write
-    steps:
-      - name: Label issues
-        run: |
-          if [ -z "${{ github.event.issue.assignee }}" ]; then
-            gh issue edit "${{ github.event.issue.number }}" --add-label "to do"
-            gh issue edit "${{ github.event.issue.number }}" --remove-label "in progress"
-          else
-            gh issue edit "${{ github.event.issue.number }}" --remove-label "to do"
-            gh issue edit "${{ github.event.issue.number }}" --add-label "in progress"
-          fi
-
-          if [[ "${{ github.event_name }}" == "issue_comment" && "${{ github.event.comment.body }}" == *"help wanted"* ]]; then
-            gh issue edit "${{ github.event.issue.number }}" --add-label "help wanted"
-          fi
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_REPO: ${{ github.repository }}
-          NUMBER: ${{ github.event.issue.number }}
-          LABELS: to do, in progress, help wanted
 
   label_existing_issues:
     runs-on: ubuntu-latest
