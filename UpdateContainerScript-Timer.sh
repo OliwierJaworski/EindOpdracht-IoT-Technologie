@@ -1,9 +1,6 @@
-[Unit]
-Description=starts the containers up and updates them on startup
-
-[Service]
-ExecStart=/home/xilinx/StartupScript/ContainerScript.sh
-
-[Install]
-WantedBy=multi-user.target
-
+#!/bin/sh  
+while true  
+do
+ /home/xilinx/StartupScript/StartDockerServices.sh
+  sleep 10
+done
