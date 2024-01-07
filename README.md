@@ -24,14 +24,17 @@ The project also includes displaying data in a dashboard and setting up a secure
 
 ## Useful links:
 ```
-### Get started guide Docker
+- Get started guide Docker
 https://docs.docker.com/get-started/
 https://hub.docker.com/
-### Docker on the Pynq debugging
+
+- Docker on the Pynq debugging
 https://discuss.pynq.io/t/docker-xilinx-platforms-pynq/1962/8
-### Debian packaging in-depth tutorial
+
+- Debian packaging in-depth tutorial
 https://www.debian.org/doc/manuals/packaging-tutorial/packaging-tutorial.en.pdf
-### Pynq Z2 basic setup
+
+- Pynq Z2 basic setup
 https://pynq.readthedocs.io/en/latest/getting_started/pynq_z2_setup.html
 
 https://www.portainer.io/
