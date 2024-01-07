@@ -28,7 +28,7 @@ timestamp = int(datetime.now().timestamp())
 #data that will be put in the database
 payload = {
 	"id": timestamp, #retrieves time in seconds from 1970-now
-	"value": 121,	 #value is the temperature
+	"value": TEMP,	 #value is the temperature
 	"scale": "C"	 #type of data in this case Celcius
 }
 
