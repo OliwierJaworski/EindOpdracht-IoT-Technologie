@@ -2,7 +2,7 @@
 
 #the path to the github repo
 DOCKERREPO="oliwierjaworski/simple-python-script"
-DOCKERTAG="Oli-Dev"
+DOCKERTAG="main"
 
 #pull from the docker repo
 docker pull "$DOCKERREPO:$DOCKERTAG"
