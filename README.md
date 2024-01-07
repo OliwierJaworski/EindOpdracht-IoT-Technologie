@@ -22,7 +22,7 @@ The project also includes displaying data in a dashboard and setting up a secure
   -The used hardware is a Pynq Z2 that runs on the arm32/v7 architecture with a custom ubuntu version made by xilinx
 ```
 ## Teamwork
-
+You can work on this project alone or with a group. It has lots of things that can help you get better at different skills.
 ## Criteria for success
 
 #### These objectives act as guiding principles for individuals aiming to undertake and complete this project independently.
