@@ -9,8 +9,7 @@ This includes automatically building the software for the appropriate platform, 
 It is also very important that the software is able to send data to the provided database and restore itself if automatic updates fail. 
 
 The project also includes displaying data in a dashboard and setting up a secure internet connection for the target platform.
-oli documentation
---
+
 ## What knowledged is needed to complete this project with success:
 ```
   -beginner level knowledge of github actions
