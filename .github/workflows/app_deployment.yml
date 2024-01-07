@@ -5,6 +5,7 @@ on:
     branches: ['incorporate-poetry-to-docker']
 
 jobs:
+  push_to_registry:
     name: poetry functionality check
     runs-on: ubuntu-latest
     steps:
