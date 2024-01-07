@@ -5,7 +5,8 @@ WORKDIR /app
 COPY pyproject.toml /app/
 COPY pyproject.toml /app/
 RUN apt-get install python3-pip -y
-RUN curl -sSL https://install.python-poetry.org | python3 -
+RUN apt-get install -y ca-certificates
+RUN curl -sSL https://install.python-poetry.org | python3.8 -
 RUN poetry config virtualenvs.create false
 RUN poetry install --no-dev
 COPY HTTPS_CRUD.py /app/
