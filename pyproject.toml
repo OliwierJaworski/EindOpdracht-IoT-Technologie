@@ -5,9 +5,5 @@ description = "poetry will be used to update the container dependencies"
 authors = ["groep 3 EAI2"]
 
 [tool.poetry.dependencies]
-python = "^3.7"
-requests = "2.31.0"
+requests = "*"
 
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"

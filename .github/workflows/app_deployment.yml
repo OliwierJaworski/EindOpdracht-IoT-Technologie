@@ -2,11 +2,10 @@ name: Publish Docker image een
 
 on:
   push:
-    branches: ['Oli-Dev']
+    branches: ['incorporate-poetry-to-docker']
 
 jobs:
-  push_to_registry:
-    name: Push Docker image to Docker Hub
+    name: poetry functionality check
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
@@ -34,6 +33,6 @@ jobs:
         with:
           context: .
           platforms: linux/arm/v7
-          push: true
+          push: false
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
