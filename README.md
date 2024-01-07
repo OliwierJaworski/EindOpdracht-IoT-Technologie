@@ -23,9 +23,10 @@ The project also includes displaying data in a dashboard and setting up a secure
 ```
 ## Teamwork
 
-These goals are indicators of the student body's ability to handle hardware and software technologies and how effectively the team works.
-
 ## Criteria for success
+
+#### These objectives act as guiding principles for individuals aiming to undertake and complete this project independently.
+
 - [x] The group is capable of showing they worked as a unit, and not as individuals
 - [X] The group has good automation hygiene (no manual tasks, plenty of automation, …)
 - [X] The group has good Git hygiene (commit messages, branching, consistency, …)
