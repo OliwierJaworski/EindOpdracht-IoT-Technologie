@@ -53,6 +53,7 @@ jobs:
             gh issue edit $issue_number --remove-label "To do"
             gh issue edit $issue_number --add-label "in progress"
           fi
+          sleep 1
         done
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
