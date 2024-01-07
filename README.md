@@ -15,7 +15,7 @@ The project also includes displaying data in a dashboard and setting up a secure
 These goals are indicators of the student body's ability to handle hardware and software technologies and how effectively the team works.
 
 ## Criteria for success
-- [ ] The group is capable of showing they worked as a unit, and not as individuals
+- [x] The group is capable of showing they worked as a unit, and not as individuals
 - [ ] The group has good automation hygiene (no manual tasks, plenty of automation, …)
 - [ ] The group has good Git hygiene (commit messages, branching, consistency, …)
 - [ ] The group has good GitHub hygiene (pull requests, issues, actions, …)
