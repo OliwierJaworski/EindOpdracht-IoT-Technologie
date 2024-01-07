@@ -1,6 +1,6 @@
 FROM arm32v7/ubuntu:20.04
 RUN apt-get update && apt-get install -y
-RUN sudo apt-get install curl
+RUN apt-get install curl -y
 WORKDIR /app 
 COPY pyproject.toml /app/
 COPY pyproject.toml /app/
