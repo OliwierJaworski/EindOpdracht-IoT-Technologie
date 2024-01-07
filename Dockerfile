@@ -3,8 +3,6 @@ RUN apt-get update && apt-get install -y
 WORKDIR /app 
 COPY pyproject.toml /app/
 RUN apt-get install python3-pip -y
-RUN pip install poetry 
-RUN poetry config virtualenvs.create false
-RUN poetry install --no-dev
+RUN pip3 install requests
 COPY hello.py /app/
 CMD ["python3", "hello.py"]
