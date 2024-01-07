@@ -1,7 +1,7 @@
 FROM ubuntu
 RUN apt-get update && apt-get install -y build-essential
 RUN apt-get install -y python3 python3-pip
-RUN pip3 install poetry
+RUN curl -sSL https://install.python-poetry.org | python3 -
 WORKDIR /app
 COPY main.c /app/
 ADD ./main.c .(/usr/bin)
