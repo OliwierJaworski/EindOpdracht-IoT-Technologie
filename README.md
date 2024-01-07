@@ -9,7 +9,19 @@ This includes automatically building the software for the appropriate platform, 
 It is also very important that the software is able to send data to the provided database and restore itself if automatic updates fail. 
 
 The project also includes displaying data in a dashboard and setting up a secure internet connection for the target platform.
-
+oli documentation
+--
+## What knowledged is needed to complete this project with success:
+```
+  -beginner level knowledge of github actions
+  -intermediate knowledge of any programming language for the use of bash and python script
+  -knowledge of port forwarding for the option to connect remotely to the IoT device
+```
+## which hardware is needed:
+```
+  -any hardware with an operating system compatible with docker
+  -The used hardware is a Pynq Z2 that runs on the arm32/v7 architecture with a custom ubuntu version made by xilinx
+```
 ## Teamwork
 
 These goals are indicators of the student body's ability to handle hardware and software technologies and how effectively the team works.
