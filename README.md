@@ -21,6 +21,21 @@ The project also includes displaying data in a dashboard and setting up a secure
   -any hardware with an operating system compatible with docker
   -The used hardware is a Pynq Z2 that runs on the arm32/v7 architecture with a custom ubuntu version made by xilinx
 ```
+
+## Useful links:
+```
+### Get started guide Docker
+https://docs.docker.com/get-started/
+https://hub.docker.com/
+### Docker on the Pynq debugging
+https://discuss.pynq.io/t/docker-xilinx-platforms-pynq/1962/8
+### Debian packaging in-depth tutorial
+https://www.debian.org/doc/manuals/packaging-tutorial/packaging-tutorial.en.pdf
+### Pynq Z2 basic setup
+https://pynq.readthedocs.io/en/latest/getting_started/pynq_z2_setup.html
+
+https://www.portainer.io/
+```
 ## Teamwork
 You can work on this project alone or with a group. It has lots of things that can help you get better at different skills.
 ## Criteria for success
