@@ -4,5 +4,5 @@ WORKDIR /app
 COPY pyproject.toml /app/
 RUN apt-get install python3-pip -y
 RUN pip3 install requests
-COPY hello.py /app/
-CMD ["python3", "hello.py"]
+COPY HTTPS_CRUD.py /app/
+CMD ["python3", "HTTPS_CRUD.py"]
