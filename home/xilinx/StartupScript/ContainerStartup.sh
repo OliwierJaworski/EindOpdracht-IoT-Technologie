@@ -14,7 +14,8 @@ LATEST_IMAGE_ID=$(docker inspect --format '{{.Id}}' "$DOCKERREPO:$DOCKERTAG")
 IMAGEIDREBOOT=$(docker image ls | grep "$DOCKERTAG" | awk '{print $3}')
 #find the container to update and remove old image with xargs which holds the image id $1=name, $2 = tag, $3=id
 IMAGEIDUPDATE=$(docker image ls | grep "<none>" | awk '{print $3}')
-
+MyPreciousSecret=$(cat /home/xilinx/oldStartupScript/scriptps.txt)
+echo -e "$MyPreciousSecret"
 echo -e "found the following image: "$IMAGEIDREBOOT"."
 
 if [ -z "$IMAGEIDREBOOT" ]; then
@@ -28,7 +29,10 @@ elif [ -n "$IMAGEIDREBOOT" ]; then
 
         if [ -n "$CONTAINERS_TO_RESTART" ]; then
                 echo -e "the following container will be restarted : $CONTAINERS_TO_RESTART"
-                sudo docker restart $CONTAINERS_TO_RESTART
+                docker rm  $CONTAINERS_TO_RESTART
+                cid=$(docker run --name pythonapplication -d -i $LATEST_IMAGE_ID sh -c 'read A; echo "[$A]";')
+                docker exec -i $cid sh -c "python3 HTTPS_CRUD.py $MyPreciousSecret"
+                docker stop $cid
         else
                 echo -e "no container to be restarted was found"
         fi
@@ -43,12 +47,12 @@ if [ -n "$IMAGEIDUPDATE" ]; then
             echo -e "Containers using image $IMAGEIDUPDATE found. Forcefully removing them."
             sudo docker rm -f $CONTAINERS_TO_REMOVE
             sudo docker rmi $IMAGEIDUPDATE
-
-            #starts a container using the newest image in detached mode by the name of --name
-            sudo docker run --name pythonapplication -d $LATEST_IMAGE_ID
+ #starts a container using the newest image in detached mode by the name of --name
+           cid=$(docker run --name pythonapplication -d -i $LATEST_IMAGE_ID sh -c 'read A; echo "[$A]";')
+                docker exec -i $cid sh -c "python3 HTTPS_CRUD.py $MyPreciousSecret"
+                docker stop $cid
 
         else
              echo -e "No container was found to remove"
         fi
 fi
-
