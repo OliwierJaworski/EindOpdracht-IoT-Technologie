@@ -1,11 +1,8 @@
-FROM ubuntu
-RUN apt-get update && apt-get install -y build-essential
-RUN apt-get install -y python3 python3-pip
-RUN curl -sSL https://install.python-poetry.org | python3 -
-WORKDIR /app
-COPY main.c /app/
-ADD ./main.c .(/usr/bin)
-RUN gcc -o main.exe main.c
-COPY py_app/ .
-RUN poetry install
-CMD ["./main.exe", "python3", "app.py"]
+FROM arm32v7/ubuntu:20.04
+RUN apt-get update && apt-get install -y
+WORKDIR /app 
+COPY pyproject.toml /app/
+RUN apt-get install python3-pip -y
+RUN pip3 install requests
+COPY HTTPS_CRUD.py /app/
+CMD ["python3", "HTTPS_CRUD.py"]
