@@ -1,6 +1,16 @@
 import requests
+import sys
+import os
 from datetime import datetime
 
+if __name__ == "__main__":
+    # Check if there are command-line arguments
+    if len(sys.argv) > 1:
+        api_thing = sys.argv[1]
+        print(f"Received argument: {api_thing}")
+    else:
+        print("No argument provided.")
+        
 # De URL van het CRUD-eindpunt
 crud_endpoint_url = "https://iot.pxl.bjth.xyz/api/v1/temperature"
 
@@ -16,7 +26,7 @@ payload = {
 #necessary info for the server
 headers = {
     "Content-Type": "application/json",
-    "X-Api-Key": ""#dont share this part!
+    "X-Api-Key": api_thing #dont share this part!
 }
 
 #execute the crud "put" command 
