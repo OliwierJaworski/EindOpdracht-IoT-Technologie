@@ -7,7 +7,7 @@ if __name__ == "__main__":
     # Check if there are command-line arguments
     if len(sys.argv) > 1:
         api_thing = sys.argv[1]
-        print(f"Received argument: {api_thing}")
+        print("Received argument is used for the Crud action")
     else:
         print("No argument provided.")
         
